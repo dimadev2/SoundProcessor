@@ -1,5 +1,11 @@
 #include "ConverterManager.h"
 
+ConverterManager::ConverterManager() {
+	converters.push_back(new MuteConverter());
+	converters.push_back(new MixConverter());
+	converters.push_back(new LouderConverter());
+}
+
 std::list<std::string> ConverterManager::getCommandArgv(const std::string& command) {
 	std::istringstream istream(command);
 
@@ -30,5 +36,13 @@ void ConverterManager::execute(const std::string& command) {
 
 	Context cnt = makeContext(converterType, argv);
 
-
+	if (converterType == "mute") {
+		converters[0]->process(cnt, argv);
+	}
+	else if (converterType == "mix") {
+		converters[0]->process(cnt, argv);
+	}
+	else if (converterType == "loud") {
+		converters[0]->process(cnt, argv);
+	}
 }

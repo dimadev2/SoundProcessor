@@ -54,7 +54,6 @@ public:
 	const Chunk& getCurrentChunk() const;
 	void readChunk();
 
-private:
 	FILE* input;
 	FileHeader fileHeader;
 	Chunk chunk;
@@ -68,7 +67,6 @@ public:
 
 	void writeChunk(const Chunk& chunk);
 
-private:
 	FILE* output;
 	FileHeader fileHeader;
 };

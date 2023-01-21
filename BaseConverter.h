@@ -1,22 +1,15 @@
 #pragma once
 #include <stdio.h>
 #include <vector>
+#include <string>
+#include "FileThread.h"
 #include "common.h"
 #include "Chunk.h"
 
-struct Context {
-	Chunk mainChunk;
-	std::vector<Chunk> additionalChunks;
-	std::list<std::string> argv;
-};
-
 class BaseConverter {
 public:
-	BaseConverter(Interval interval) { interval = interval; }
+	BaseConverter() = default;
 
-	virtual Chunk process(const Context& context) = 0;
-
-	const Interval& getInterval() const { return interval; }
-private:
-	Interval interval;
+	virtual Chunk processChunk(const Context& context) = 0;
+	virtual void process(const Context& context, std::list<std::string> argv) = 0;
 };

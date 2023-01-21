@@ -10,7 +10,7 @@ public:
 
 	const Chunk& operator=(const Chunk& ch);
 
-	static const size_t capacity = config::sampleRate * 5;	// 5 seconds
+	static const size_t capacity = config::sampleRate;	// 1 second
 	uint16_t* chunk;
 	size_t size;
 };

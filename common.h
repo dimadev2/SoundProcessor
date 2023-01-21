@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <list>
 
 namespace config {
 	const uint16_t numChannels = 1;
@@ -10,12 +11,14 @@ namespace config {
 
 class Interval {
 public:
-	class Time {
-	public:
-		size_t sec;
-		size_t sample;
-	};
+	size_t start;
+	size_t end;
+};
 
-	Time start;
-	Time end;
+struct Context {
+	Chunk mainChunk;
+	std::vector<Chunk> additionalChunks;
+	std::list<std::string> argv;
+
+	Interval interval;
 };

@@ -2,7 +2,9 @@
 #include "BaseConverter.h"
 
 class MixConverter : BaseConverter {
-	MixConverter(Interval interval) : BaseConverter(interval) {}
+public:
+	MixConverter() = default;
 
-	virtual Chunk process(const Context& context);
+	virtual Chunk processChunk(const Context& context);
+	virtual void process(const Context& context, std::list<std::string> argv);
 };

@@ -2,7 +2,9 @@
 #include "BaseConverter.h"
 
 class MuteConverter : BaseConverter {
-	MuteConverter(Interval interval) : BaseConverter(interval) {}
+public:
+	MuteConverter() = default;
 
-	virtual Chunk process(const Context& context);
+	virtual Chunk processChunk(const Context& context);
+	virtual void process(const Context& context, std::list<std::string> argv);
 };
