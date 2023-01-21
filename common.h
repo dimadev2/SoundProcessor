@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 #include <list>
+#include <vector>
+#include "Chunk.h"
 
 namespace config {
 	const uint16_t numChannels = 1;

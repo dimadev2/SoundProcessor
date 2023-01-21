@@ -30,6 +30,27 @@ std::string ConverterManager::getConverterType(const std::string& command) {
 	return converterType;
 }
 
+Context ConverterManager::makeContext(std::string convertertype, std::list<std::string> argv) {
+	Context cnt;
+	auto iter = argv.begin();
+
+	if (convertertype == "mute" || convertertype == "loud") {
+		iter++;
+		cnt.interval.start = std::atoi((*iter).c_str());
+		iter++;
+		cnt.interval.end = std::atoi((*iter).c_str());
+	}
+	else if (convertertype == "mix") {
+		iter++;
+		iter++;
+		cnt.interval.start = std::atoi((*iter).c_str());
+		iter++;
+		cnt.interval.end = std::atoi((*iter).c_str());
+	}
+
+	return cnt;
+}
+
 void ConverterManager::execute(const std::string& command) {
 	std::string converterType = getConverterType(command);
 	std::list<std::string> argv = getCommandArgv(command);
